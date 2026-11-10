@@ -1,9 +1,9 @@
 # Install Backlot for Movieguide
 
-Backlot 0.1.0, build 370. For Macs running macOS 14 or later, including Apple
+Backlot 0.1.0, build 371. For Macs running macOS 14 or later, including Apple
 Silicon and Intel.
 
-Download: https://github.com/ChrisWach/backlot-releases/releases/download/v0.1.0-370/Backlot-0.1.0-370-prod.dmg
+Download: https://github.com/ChrisWach/backlot-releases/releases/download/v0.1.0-371/Backlot-0.1.0-371-prod.dmg
 
 1. Download and open the DMG. Drag Backlot into Applications.
 2. Eject the Backlot disk and open Backlot from Applications.
@@ -17,7 +17,7 @@ Download: https://github.com/ChrisWach/backlot-releases/releases/download/v0.1.0
    Backlot copy. Never put a password in a chat, email or problem report.
 
 Already using Backlot? Quit it before replacing it in Applications, or use
-Backlot > Check for Updates once build 370 is offered. Keep the same app
+Backlot > Check for Updates once build 371 is offered. Keep the same app
 location. Do not remove Backlot's saved data or Keychain items.
 
 Guest pages stay on the Mac and are separate from the team workspace.
