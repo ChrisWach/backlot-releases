@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark"><meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Sign in to Backlot</title>
+<style>
+:root{font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#15161b;background:#f6f7fb;color-scheme:light dark}
+*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:32px 20px}main{width:min(100%,600px)}.brand{font-size:13px;font-weight:750;letter-spacing:.28em;color:#003bff}h1{font-size:clamp(30px,6vw,44px);line-height:1.1;letter-spacing:-.04em;margin:25px 0 18px}p{color:#555963}.lead{font-size:19px}ol{padding:24px 24px 24px 52px;border:1px solid #dadde7;border-radius:18px;background:#fff}li{padding:8px 0}strong{color:#15161b}a{color:#003bff}a:focus-visible{outline:3px solid #ffb31a;outline-offset:5px}.actions{margin:26px 0}.button{display:inline-block;padding:14px 22px;border-radius:12px;text-decoration:none;font-weight:650;background:#003bff;color:white}.note{font-size:13px}footer{font-size:12px;color:#656b77;margin-top:30px}[hidden]{display:none}@media(prefers-color-scheme:dark){:root{background:#11131a;color:#f2f4fa}.brand,a{color:#91acff}p{color:#b7bece}strong{color:#f2f4fa}ol{background:#1b1e28;border-color:#343949}.button{color:white}footer{color:#aab2c4}}
+</style>
+</head>
+<body><main>
+<div class="brand">BACKLOT / MOVIEGUIDE</div>
+<h1>Sign in to Backlot</h1>
+<p class="lead" id="lead">Open Backlot and enter the 6-digit code from your email.</p>
+<div class="actions" id="actions" hidden>
+<a class="button" id="open" href="backlot://auth-callback">Open Backlot and sign in</a>
+<p class="note">Your browser may ask to open Backlot. Choose Allow or Open.</p>
+</div>
+<ol>
+<li><strong>Nothing happened?</strong> Backlot may not be installed on this Mac, or it may be older than build 369.</li>
+<li><strong>Use the code instead.</strong> Open Backlot on any Mac, choose <strong>Sign in</strong>, then <strong>Have a code from an email?</strong> Enter your email address and the 6-digit code from the email.</li>
+<li><strong>No Backlot yet?</strong> <a href="https://chriswach.github.io/backlot-releases/join/">Get Backlot</a>, then come back to the email and use the code.</li>
+</ol>
+<p class="note">The code and this link expire within an hour and work once. If yours has expired, ask for a new email from the Backlot sign-in screen, or ask the person who invited you.</p>
+<footer>This page doesn't sign you in by itself and sends nothing anywhere. It hands the sign-in to Backlot on this Mac.</footer>
+</main>
+<script>
+// core-0027. The email's link brings the sign-in token here in the URL
+// fragment (#token_hash=…&type=…), which browsers never send to a server.
+// Mail scanners that fetch this page get static HTML, so they can't use up
+// the sign-in. Only Backlot, handed the token below, signs in.
+(function () {
+  var params = new URLSearchParams(location.hash.slice(1));
+  var hash = params.get('token_hash') || '';
+  var type = params.get('type') || 'email';
+  if (location.hash) history.replaceState(null, '', location.pathname);
+  if (!/^[0-9a-f]{20,128}$/i.test(hash) || ['email', 'magiclink', 'invite', 'signup'].indexOf(type) < 0) return;
+  var target = 'backlot://auth-callback?token_hash=' + hash.toLowerCase() + '&type=' + type;
+  document.getElementById('open').href = target;
+  document.getElementById('actions').hidden = false;
+  document.getElementById('lead').textContent = 'Backlot should open and sign you in. If it doesn’t, use the button below or the 6-digit code from your email.';
+  location.href = target;
+}());
+</script>
+</body></html>
