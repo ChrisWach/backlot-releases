@@ -3,7 +3,7 @@
 Backlot 0.1.0, build 373. For Macs running macOS 14 or later, including Apple
 Silicon and Intel.
 
-Download: https://github.com/ChrisWach/backlot-releases/releases/download/v0.1.0-381/Backlot-0.1.0-381-prod.dmg
+Download: https://github.com/ChrisWach/backlot-releases/releases/download/v0.1.0-382/Backlot-0.1.0-382-prod.dmg
 
 1. Download and open the DMG. Drag Backlot into Applications.
 2. Eject the Backlot disk and open Backlot from Applications.
